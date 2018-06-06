@@ -4,6 +4,7 @@ var due=document.getElementById('2');
 var tre=document.getElementById('3');
 var quatro=document.getElementById('4');
 
+
 var display=document.getElementById('display');
 /*function imprimere(){
   cero=0;
@@ -13,6 +14,14 @@ var display=document.getElementById('display');
 }
 cero.onclick=imprimere;*/
 var numeros=[0,1,2,3,4,5,6,7,8,9];
+var numeri=[];
+function addNumeri(elemento){
+
+  for (var i = 0; i < numeri.length; i++) {
+    numeri[i].push(elemento);
+  }
+  return console.log(numeri);
+}
 
 
 function Cero(){
@@ -25,7 +34,7 @@ cero.onclick=Cero;
 
 function functionName() {
   cero=0;
-  console.log(cero);
+  console.log("pressionaste el tasto"+cero);
 }
 
 cero.onclick=functionName;
@@ -55,10 +64,10 @@ var Eventos={
 init: function(){
   var bottone=document.getElementsByClassName('tecla');
   for (var i = 0; i < bottone.length; i++) {
-    bottone[i].onmouseover=this.bordetras;
-    bottone[i].onmouseleave=this.sin;
+    bottone[i].onmousedown=this.bordetras;
+    bottone[i].onmouseup=this.sin;
     }
-    cero.onclick=this.imprimere;
+    cero.onclick=this.addNumeri;
   },
   bordetras: function(event){
     bordeTrasparente(event.target);
@@ -67,7 +76,7 @@ init: function(){
     sinborde(event.target);
   },
   imprimere: function(event){
-    functionName(event.target);
+    addNumeri(event.target);
   }
 }
 
