@@ -23,6 +23,9 @@ var display=document.getElementById('display');
 var summa=true;
 var uguale=true;
 var prova=true;
+var entre=true;
+var molti=true;
+var dividi=true;
 
 var valorSumma=0;
 var valorMeno=0;
@@ -31,7 +34,7 @@ var valorDiv=0;
 
 var resultado=0;
 var resultado1=0;
-var somme=[];
+
 var summaDisplay=[];
 
 function bordiCon(selector){
@@ -57,6 +60,10 @@ var Eventos={
       bottoni[i].onmouseup=this.SinBorde;
     }
     on.onclick=this.tastoOn;
+    punto.onclick=this.tastoPunto;
+    signo.onclick=this.tastoMenoMas;
+    igual.onclick=this.tastoIgual;
+
     cero.onclick=this.tastoZero;
     uno.onclick=this.tastoUno;
     due.onclick=this.tastoDue;
@@ -67,10 +74,9 @@ var Eventos={
     sette.onclick=this.tastoSette;
     otto.onclick=this.tastoOtto;
     nove.onclick=this.tastoNove;
-    punto.onclick=this.tastoPunto;
-    signo.onclick=this.tastoMenoMas;
+
     mas.onclick=this.tastoMas;
-    igual.onclick=this.tastoIgual;
+    meno.onclick=this.tastoMeno;
     por.onclick=this.tastoPor;
     dividido.onclick=this.tastoDiv;
   },
@@ -125,8 +131,6 @@ var Eventos={
   tastoMas:function(){
     summa=false;
     valorSumma=parseFloat(display.innerHTML);
-    somme.push(valorSumma);
-    summaDisplay.push(valorSumma);
     console.log("El valor a summar será: "+valorSumma);
     display.innerHTML="";
 
@@ -150,8 +154,6 @@ var Eventos={
   tastoMeno:function(){
     entre=false;
     valorMeno=parseFloat(display.innerHTML);
-    summaDisplay.push(valorMeno);
-    entres.push(valorMeno);
     console.log("El valor que sera meno es: "+valorMeno);
     display.innerHTML="";
   },
@@ -162,14 +164,15 @@ var Eventos={
   },
 
   tastoPunto:function(){
+    prova=false;
     if (display.innerHTML.indexOf(".")== -1) {
       if (display.innerHTML== ""){
-      display.innerHTML = display.innerHTML + "0.";
+      //display.innerHTML = display.innerHTML + "0.";
+      display.innerHTML="0."+display.innerHTML;
       } else {
       display.innerHTML = display.innerHTML + ".";
       }
-
-      }
+    }
   },
 
   tastoOn:function(){
@@ -185,10 +188,10 @@ var Eventos={
 
   tastoZero:function(){
     cero=0;
-    if (display.innerHTML.lenght=1 && display.innerHTML==0 ) {
+    if (display.innerHTML.lenght=1 && display.innerHTML==0 && prova==true) {
       display.innerHTML=cero;
-
-    }else if (display.innerHTML.length<8 ) {
+      //prova=false;
+    }else if (display.innerHTML.length<8 && prova==false ) {
     display.innerHTML+=cero;
   }
 
@@ -197,22 +200,33 @@ var Eventos={
 
   tastoUno:function(){
     uno=1;
-    if (display.innerHTML==0 || summa==false || uguale==false) {
-      display.innerHTML=uno;
-      summa=true;
-      uguale=true;
-    }else if(display.innerHTML.length<8 ){
-    display.innerHTML+=uno;
-    }
+    if (display.innerHTML==0 && prova==true || summa==false || uguale==false ||
+       entre==false || dividi==false||molti==false) {
+        display.innerHTML=uno;
+        summa=true;
+        uguale=true;
+        entre=true;
+        dividi=true;
+        molti=true;
+        prova=false;
+
+    }else if(display.innerHTML.length<8 && prova==false ){
+        display.innerHTML+=uno;
+      }
     console.log(parseFloat(display.innerHTML));
   },
 
   tastoDue:function(){
     due=2;
-    if (display.innerHTML==0 || summa==false || uguale==false) {
-      display.innerHTML=due;
-      summa=true;
-      uguale=true;
+    if (display.innerHTML==0 && prova==true || summa==false || uguale==false ||
+       entre==false || dividi==false||molti==false) {
+        display.innerHTML=due;
+        summa=true;
+        uguale=true;
+        entre=true;
+        dividi=true;
+        molti=true;
+        prova=false;
     }else if(display.innerHTML.length<8){
     display.innerHTML+=due;
     }
@@ -221,10 +235,15 @@ var Eventos={
 
   tastoTre:function(){
     tre=3;
-    if (display.innerHTML==0 || summa==false || uguale==false) {
-      display.innerHTML=tre;
-      summa=true;
-      uguale=true;
+    if (display.innerHTML==0 && prova==true || summa==false || uguale==false ||
+       entre==false || dividi==false||molti==false) {
+        display.innerHTML=tre;
+        summa=true;
+        uguale=true;
+        entre=true;
+        dividi=true;
+        molti=true;
+        prova=false;
     }else if(display.innerHTML.length<8){
     display.innerHTML+=tre;
     }
@@ -233,10 +252,15 @@ var Eventos={
 
   tastoCuattro:function(){
     quatro=4;
-    if (display.innerHTML==0 || summa==false || uguale==false) {
-      display.innerHTML=quatro;
-      summa=true;
-      uguale=true;
+    if (display.innerHTML==0 && prova==true || summa==false || uguale==false ||
+       entre==false || dividi==false||molti==false) {
+        display.innerHTML=quatro;
+        summa=true;
+        uguale=true;
+        entre=true;
+        dividi=true;
+        molti=true;
+        prova=false;
     }else if(display.innerHTML.length<8){
     display.innerHTML+=quatro;
     }
@@ -245,10 +269,15 @@ var Eventos={
 
   tastoCinque:function(){
     cinque=5;
-    if (display.innerHTML==0 || summa==false || uguale==false) {
-      display.innerHTML=cinque;
-      summa=true;
-      uguale=true;
+    if (display.innerHTML==0 && prova==true || summa==false || uguale==false ||
+       entre==false || dividi==false||molti==false) {
+        display.innerHTML=cinque;
+        summa=true;
+        uguale=true;
+        entre=true;
+        dividi=true;
+        molti=true;
+        prova=false;
     }else if(display.innerHTML.length<8){
     display.innerHTML+=cinque;
     }
@@ -257,10 +286,15 @@ var Eventos={
 
   tastoSei:function(){
     sei=6;
-    if (display.innerHTML==0 || summa==false || uguale==false) {
-      display.innerHTML=sei;
-      summa=true;
-      uguale=true;
+    if (display.innerHTML==0 && prova==true || summa==false || uguale==false ||
+       entre==false || dividi==false||molti==false) {
+        display.innerHTML=sei;
+        summa=true;
+        uguale=true;
+        entre=true;
+        dividi=true;
+        molti=true;
+        prova=false;
     }else if(display.innerHTML.length<8){
     display.innerHTML+=sei;
     }
@@ -269,10 +303,15 @@ var Eventos={
 
   tastoSette:function(){
     sette=7;
-    if (display.innerHTML==0 || summa==false || uguale==false) {
-      display.innerHTML=sette;
-      summa=true;
-      uguale=true;
+    if (display.innerHTML==0 && prova==true || summa==false || uguale==false ||
+       entre==false || dividi==false||molti==false) {
+        display.innerHTML=sette;
+        summa=true;
+        uguale=true;
+        entre=true;
+        dividi=true;
+        molti=true;
+        prova=false;
     }else if(display.innerHTML.length<8){
     display.innerHTML+=sette;
     }
@@ -281,10 +320,15 @@ var Eventos={
 
   tastoOtto:function(){
     otto=8;
-    if (display.innerHTML==0 || summa==false || uguale==false) {
-      display.innerHTML=otto;
-      summa=true;
-      uguale=true;
+    if (display.innerHTML==0 && prova==true || summa==false || uguale==false ||
+       entre==false || dividi==false||molti==false) {
+        display.innerHTML=otto;
+        summa=true;
+        uguale=true;
+        entre=true;
+        dividi=true;
+        molti=true;
+        prova=false;
     }else if(display.innerHTML.length<8){
     display.innerHTML+=otto;
     }
@@ -293,10 +337,15 @@ var Eventos={
 
   tastoNove:function(){
     nove=9;
-    if (display.innerHTML==0 || summa==false || uguale==false) {
-      display.innerHTML=nove;
-      summa=true;
-      uguale=true;
+    if (display.innerHTML==0 && prova==true || summa==false || uguale==false ||
+       entre==false || dividi==false||molti==false) {
+        display.innerHTML=nove;
+        summa=true;
+        uguale=true;
+        entre=true;
+        dividi=true;
+        molti=true;
+        prova=false;
     }else if(display.innerHTML.length<8){
     display.innerHTML+=nove;
     }
